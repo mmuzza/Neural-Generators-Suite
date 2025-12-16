@@ -1,0 +1,72 @@
+# data:
+#   dataset: mnist # mnist
+# train:
+#   batch_size: 64
+#   lr: 0.0001
+#   n_epochs: 5
+#   num_workers: 4 # change this based on number of cores on your CPU. 4 is sufficient for 1 gpu. If unsure leave at 1.
+# network:
+#   model: diffusion # vae, gan, diffusion
+#   hidden_dim: 400 # used for VAE and gan
+#   latent_dim: 40 # used for VAE or gan
+# vae:
+#   vae_recon_loss: l2 # l1 or l2
+#   beta: 1
+# diffusion:
+#   timesteps: 100
+#   noise_start: 0.0001
+#   noise_end: 0.02
+# optimizer:
+#   type: "adamw" # adamw or sgd
+#   weight_decay: 0.0 #0.001
+# gan:
+#   leaky: False
+
+data:
+  dataset: fashionmnist
+
+train:
+  batch_size: 128 # bigger batch helps stability and FID
+  lr: 0.0002 # common for diffusion training (AdamW allowed)
+  n_epochs: 10 # diffusion needs many epochs for low FID
+  num_workers: 4
+
+network:
+  model: diffusion
+  hidden_dim: 128
+  latent_dim: 40
+
+vae:
+  vae_recon_loss: l2
+  beta: 1
+
+diffusion:
+  model:
+    type: unet
+    base_channels: 128
+    channel_mult: [1, 2, 2]
+    num_res_blocks: 2
+    time_embedding_dim: 256
+    use_attention: False
+  timesteps: 1000
+  noise_schedule: cosine
+  noise_start: 0.0001
+  noise_end: 0.02
+  sample:
+    method: ddim
+    ddim_steps: 50
+    classifier_free_guidance:
+      use: True
+      scale: 2.0
+
+optimizer:
+  type: "adamw"
+  weight_decay: 0.0
+  betas: [0.9, 0.999]
+
+training:
+  ema:
+    use: True
+    decay: 0.9999
+  grad_clip: 1.0
+  amp: True

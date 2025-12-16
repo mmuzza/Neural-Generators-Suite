@@ -1,0 +1,17 @@
+data:
+  dataset: mnist # mnist or fashionmnist   
+train:
+  batch_size: 4
+  lr: 0.0001
+  n_epochs: 1
+  num_workers: 1 # change this based on number of cores on your CPU. 4 is sufficient for 1 gpu. If unsure leave at 1.  
+network:
+  model: diffusion # vae, gan, diffusion
+diffusion:
+  timesteps: 10
+  noise_start: 0.0001
+  noise_end: 0.02
+optimizer:
+optimizer:
+  type: 'adamw' # adamw or sgd
+  weight_decay: 0.0 #0.001

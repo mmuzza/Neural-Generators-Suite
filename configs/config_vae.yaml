@@ -1,0 +1,581 @@
+# data:
+#   dataset: mnist # mnist
+# train:
+#   batch_size: 64
+#   lr: 0.0001
+#   n_epochs: 5
+#   num_workers: 4 # change this based on number of cores on your CPU. 4 is sufficient for 1 gpu. If unsure leave at 1.
+# network:
+#   model: vae # vae, gan, diffusion
+#   hidden_dim: 400 # used for VAE and gan
+#   latent_dim: 40 # used for VAE or gan
+# vae:
+#   vae_recon_loss: l2 # l1 or l2
+#   beta: 2
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+# optimizer:
+#   type: "adamw" # adamw or sgd
+#   weight_decay: 0.0 #0.001
+# gan:
+#   leaky: False
+
+# data:
+#   dataset: mnist # mnist
+# train:
+#   batch_size: 128
+#   lr: 0.001
+#   n_epochs: 20
+#   num_workers: 4 # change this based on number of cores on your CPU. 4 is sufficient for 1 gpu. If unsure leave at 1.
+# network:
+#   model: vae # vae, gan, diffusion
+#   hidden_dim: 512 # used for VAE and gan
+#   latent_dim: 20 # used for VAE or gan
+# vae:
+#   vae_recon_loss: l1 # l1 or l2
+#   beta: 0.5
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+# optimizer:
+#   type: "adamw" # adamw or sgd
+#   weight_decay: 0.0 #0.001
+# gan:
+#   leaky: False
+
+# data:
+#   dataset: mnist # mnist
+# train:
+#   batch_size: 128
+#   lr: 0.0005
+#   n_epochs: 40
+#   num_workers: 4 # change this based on number of cores on your CPU. 4 is sufficient for 1 gpu. If unsure leave at 1.
+# network:
+#   model: vae # vae, gan, diffusion
+#   hidden_dim: 800 # used for VAE and gan
+#   latent_dim: 16 # used for VAE or gan
+# vae:
+#   vae_recon_loss: l1 # l1 or l2
+#   beta: 0.1
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+# optimizer:
+#   type: "adamw" # adamw or sgd
+#   weight_decay: 0.0 #0.001
+# gan:
+#   leaky: False
+
+# data:
+#   dataset: mnist # mnist
+# train:
+#   batch_size: 128
+#   lr: 0.001
+#   n_epochs: 60
+#   num_workers: 4
+# network:
+#   model: vae # vae, gan, diffusion
+#   hidden_dim: 512
+#   latent_dim: 8
+# vae:
+#   vae_recon_loss: l2 # L2 for smoother latent space
+#   beta: 8.0 # High beta for strong regularization
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+# optimizer:
+#   type: "adamw"
+#   weight_decay: 0.0001 # Small weight decay for regularization
+# gan:
+#   leaky: False
+
+# data:
+#   dataset: mnist
+# train:
+#   batch_size: 128
+#   lr: 0.001 # Higher LR
+#   n_epochs: 50
+#   num_workers: 4
+# network:
+#   model: vae
+#   hidden_dim: 400
+#   latent_dim: 20 # Moderate size
+# vae:
+#   vae_recon_loss: l2
+#   beta: 10.0
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+# optimizer:
+#   type: "adamw"
+#   weight_decay: 0.0001
+# gan:
+#   leaky: False
+
+######################################################################
+##### FID = 251.88 and score of 1.1176 / 5.0
+##### Loss 545.108
+# data:
+#   dataset: fashionmnist
+# train:
+#   batch_size: 128
+#   lr: 0.0005 # lower LR for smoother convergence
+#   n_epochs: 80 # train longer to stabilize latent space
+#   num_workers: 4
+
+# network:
+#   model: vae
+#   hidden_dim: 1024 # increase model capacity
+#   latent_dim: 64 # capture more variation in Fashion-MNIST
+
+# vae:
+#   vae_recon_loss: bce # better for pixel data in [0,1]
+#   beta: 0.3 # smaller beta -> sharper reconstructions
+
+# optimizer:
+#   type: "adamw"
+#   weight_decay: 0.0 # small regularization to prevent overfitting
+
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+
+# gan:
+#   leaky: False
+
+##### FID = 232.50409567197505 and 1.4893 / 5.0
+##### Loss 156.950
+# data:
+#   dataset: fashionmnist
+# train:
+#   batch_size: 128
+#   lr: 0.0005 # lower LR for smoother convergence
+#   n_epochs: 80 # train longer to stabilize latent space
+#   num_workers: 4
+
+# network:
+#   model: vae
+#   hidden_dim: 1024 # increase model capacity
+#   latent_dim: 32 # capture more variation in Fashion-MNIST
+
+# vae:
+#   vae_recon_loss: l1 # better for pixel data in [0,1]
+#   beta: 0.5 # smaller beta -> sharper reconstructions
+
+# optimizer:
+#   type: "adamw"
+#   weight_decay: 0.0 # small regularization to prevent overfitting
+
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+
+# gan:
+#   leaky: False
+
+# ##### FID = 196.94755712442497  and  2.3554 / 5.0
+# ##### Loss 145.540
+# data:
+#   dataset: fashionmnist
+# train:
+#   batch_size: 128
+#   lr: 0.0005
+#   n_epochs: 120
+#   num_workers: 4
+
+# network:
+#   model: vae
+#   hidden_dim: 1024
+#   latent_dim: 64
+
+# vae:
+#   vae_recon_loss: l1
+#   beta: 0.3
+
+# optimizer:
+#   type: "adamw"
+#   weight_decay: 0.0
+
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+
+# gan:
+#   leaky: False
+
+##### FID = 156.38484557273182  and  3.22 / 5.0
+##### Loss = 125.160
+# data:
+#   dataset: fashionmnist
+# train:
+#   batch_size: 128
+#   lr: 0.0005
+#   n_epochs: 150
+#   num_workers: 4
+
+# network:
+#   model: vae
+#   hidden_dim: 1024
+#   latent_dim: 80
+
+# vae:
+#   vae_recon_loss: l1
+#   beta: 0.2
+
+# optimizer:
+#   type: "adamw"
+#   weight_decay: 0.0
+
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+
+# gan:
+#   leaky: False
+
+# ##### FID = 156.38484557273182  and  3.22 / 5.0
+# ##### Loss = 125.160
+# data:
+#   dataset: fashionmnist
+# train:
+#   batch_size: 128
+#   lr: 0.0005
+#   n_epochs: 150
+#   num_workers: 4
+
+# network:
+#   model: vae
+#   hidden_dim: 1024
+#   latent_dim: 80
+
+# vae:
+#   vae_recon_loss: l1
+#   beta: 0.2
+
+# optimizer:
+#   type: "adamw"
+#   weight_decay: 0.0
+
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+
+# gan:
+#   leaky: False
+
+##########################################
+
+##### FID = 94.4243018751257  and  4.3928 / 5.0
+##### Loss = 94.301
+# data:
+#   dataset: fashionmnist
+# train:
+#   batch_size: 128
+#   lr: 0.0005
+#   n_epochs: 150
+#   num_workers: 4
+
+# network:
+#   model: vae
+#   hidden_dim: 1024
+#   latent_dim: 80
+
+# vae:
+#   vae_recon_loss: l1
+#   beta: 0.05
+
+# optimizer:
+#   type: "adamw"
+#   weight_decay: 0.0
+
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+
+# gan:
+#   leaky: False
+
+##### FID = 77.69535323638252  and  4.5425 / 5.0
+##### Loss = 73.316
+# data:
+#   dataset: fashionmnist
+# train:
+#   batch_size: 128
+#   lr: 0.0005
+#   n_epochs: 150
+#   num_workers: 4
+
+# network:
+#   model: vae
+#   hidden_dim: 1024
+#   latent_dim: 80
+
+# vae:
+#   vae_recon_loss: l1
+#   beta: 0.03
+
+# optimizer:
+#   type: "adamw"
+#   weight_decay: 0.0
+
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+
+# gan:
+#   leaky: False
+
+##### FID = 61.353894280234925  and   / 5.0
+##### Loss = 62.916
+# data:
+#   dataset: fashionmnist
+# train:
+#   batch_size: 128
+#   lr: 0.0005
+#   n_epochs: 150
+#   num_workers: 4
+
+# network:
+#   model: vae
+#   hidden_dim: 1024
+#   latent_dim: 80
+
+# vae:
+#   vae_recon_loss: l1
+#   beta: 0.009
+
+# optimizer:
+#   type: "adamw"
+#   weight_decay: 0.0
+
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+
+# gan:
+#   leaky: False
+
+##### FID = 57.23222326478947  and   / 5.0
+##### Loss = 51.315
+# data:
+#   dataset: fashionmnist
+# train:
+#   batch_size: 128
+#   lr: 0.0005
+#   n_epochs: 150
+#   num_workers: 4
+
+# network:
+#   model: vae
+#   hidden_dim: 1024
+#   latent_dim: 80
+
+# vae:
+#   vae_recon_loss: l1
+#   beta: 0.003
+
+# optimizer:
+#   type: "adamw"
+#   weight_decay: 0.0
+
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+
+# gan:
+#   leaky: False
+
+##### FID =  75.82036297812022 and   / 5.0
+##### Loss = 43.342
+# data:
+#   dataset: fashionmnist
+# train:
+#   batch_size: 128
+#   lr: 0.0005
+#   n_epochs: 150
+#   num_workers: 4
+
+# network:
+#   model: vae
+#   hidden_dim: 1024
+#   latent_dim: 80
+
+# vae:
+#   vae_recon_loss: l1
+#   beta: 0.0009
+
+# optimizer:
+#   type: "adamw"
+#   weight_decay: 0.0
+
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+
+# gan:
+#   leaky: False
+
+# ##### FID = 56.875269969665965  and  4.7133  / 5.0
+# ##### Loss = 53.535
+# data:
+#   dataset: fashionmnist
+# train:
+#   batch_size: 128
+#   lr: 0.0005
+#   n_epochs: 150
+#   num_workers: 4
+
+# network:
+#   model: vae
+#   hidden_dim: 1024
+#   latent_dim: 80
+
+# vae:
+#   vae_recon_loss: l1
+#   beta: 0.0035
+
+# optimizer:
+#   type: "adamw"
+#   weight_decay: 0.0
+
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+
+# gan:
+#   leaky: False
+
+# ##### FID = 56.25047245060733  at 0.0033
+# ##### FID =   at 0.0032
+# ##### Loss =
+# data:
+#   dataset: fashionmnist
+# train:
+#   batch_size: 128
+#   lr: 0.0005
+#   n_epochs: 150
+#   num_workers: 4
+
+# network:
+#   model: vae
+#   hidden_dim: 1024
+#   latent_dim: 80
+
+# vae:
+#   vae_recon_loss: l1
+#   beta: 0.0033333
+
+# optimizer:
+#   type: "adamw"
+#   weight_decay: 0.0
+
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+
+# gan:
+#   leaky: False
+##### FID = 64.0708190099457  and   / 5.0
+##### Loss = Loss 49.155
+# data:
+#   dataset: fashionmnist
+# train:
+#   batch_size: 128
+#   lr: 0.0005
+#   n_epochs: 150
+#   num_workers: 4
+
+# network:
+#   model: vae
+#   hidden_dim: 1024
+#   latent_dim: 80
+
+# vae:
+#   vae_recon_loss: l1
+#   beta: 0.002
+
+# optimizer:
+#   type: "adamw"
+#   weight_decay: 0.0
+
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+
+# gan:
+#   leaky: False
+
+#####################################################################################################
+
+## This passed 1.2.1 and 1.2.2
+# data:
+#   dataset: mnist # mnist
+# train:
+#   batch_size: 128
+#   lr: 0.0005
+#   n_epochs: 150
+#   num_workers: 4
+# network:
+#   model: vae # vae, gan, diffusion
+#   hidden_dim: 1024 # used for VAE and gan
+#   latent_dim: 80 # used for VAE or gan
+# vae:
+#   vae_recon_loss: l1 # l1 or l2
+#   beta: 0.0005
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+# optimizer:
+#   type: "adamw" # adamw or sgd
+#   weight_decay: 0.0 #0.001
+# gan:
+#   leaky: False
+
+## This passed 1.2.1 and 1.2.2 and 1.2.3
+# data:
+#   dataset: mnist # mnist
+# train:
+#   batch_size: 128
+#   lr: 0.0005
+#   n_epochs: 150
+#   num_workers: 4
+# network:
+#   model: vae # vae, gan, diffusion
+#   hidden_dim: 1024 # used for VAE and gan
+#   latent_dim: 80 # used for VAE or gan
+# vae:
+#   vae_recon_loss: l1 # l1 or l2
+#   beta: 0.0001
+# diffusion:
+#   time_dim: 128
+#   timesteps: 500
+# optimizer:
+#   type: "adamw" # adamw or sgd
+#   weight_decay: 0.0 #0.001
+# gan:
+#   leaky: False
+
+# This passed 1.2.1 and 1.2.2 and 1.2.3 and 1.2.4
+data:
+  dataset: mnist # mnist
+train:
+  batch_size: 128
+  lr: 0.0005
+  n_epochs: 150
+  num_workers: 4
+network:
+  model: vae # vae, gan, diffusion
+  hidden_dim: 1024 # used for VAE and gan
+  latent_dim: 80 # used for VAE or gan
+vae:
+  vae_recon_loss: l2 # l1 or l2
+  beta: 0.00005
+diffusion:
+  time_dim: 128
+  timesteps: 500
+optimizer:
+  type: "adamw" # adamw or sgd
+  weight_decay: 0.0 #0.001
+gan:
+  leaky: False
